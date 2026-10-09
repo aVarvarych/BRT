@@ -1,0 +1,29 @@
+{
+  "name": "tracker-road",
+  "private": true,
+  "workspaces": [
+    "app",
+    "backend"
+  ],
+  "scripts": {
+    "dev:app": "npm run dev -w @tracker-road/app",
+    "dev:api": "npm run dev -w @tracker-road/backend",
+    "build:app": "npm run build -w @tracker-road/app",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run check -w @tracker-road/backend",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "3.9.9"
+  },
+  "overrides": {
+    "handlebars": "^4.7.10"
+  },
+  "lint-staged": {
+    "backend/**/*.{ts,js}": "eslint --fix",
+    "*": "prettier --write --ignore-unknown"
+  }
+}
